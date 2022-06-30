@@ -19,7 +19,7 @@ function load_env_details() {
 }
 
 function password_zip_bitwarden() {
-    zip -e -P "$BITWARDEN_BACKUP_PASSWORD" -r bitwarden_backup.zip "$BITWARDEN_FILE_LOCATION"
+    zip -e -P "$BITWARDEN_BACKUP_PASSWORD" -r bitwarden_backup.zip "$BITWARDEN_FILE_LOCATION" > /dev/null
 }
 
 function move_to_backup() {
