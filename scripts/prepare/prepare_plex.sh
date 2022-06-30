@@ -8,7 +8,12 @@ fi
 
 function load_env_details() {
     SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-    source "$SCRIPT_DIR/../../.env"
+    ENV_LOCATION="$SCRIPT_DIR/../../.env"
+    if [[ -f "$ENV_LOCATION" ]]; then
+        source "$ENV_LOCATION"
+    else
+        echo ".env file not found, please create"
+    fi
 }
 
 function dump_plex_database() {
