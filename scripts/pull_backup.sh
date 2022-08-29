@@ -23,10 +23,10 @@ function process_backup() {
     fi
 
     # Convert file owner to myself on remote target - Assumes sudo needs no password
-    ssh $TARGET_HOST "sudo chown -R $(whoami):$(whoami) $BACKUP_PATH"
+    ssh $TARGET_HOST "sudo chown -R $TARGET_USER:$TARGET_USER $BACKUP_PATH"
 
     # Copy files back locally
-    rsync -avz "$TARGET_HOST":"$BACKUP_PATH" "$TARGET_STORAGE/backup"
+    rsync -avz "$TARGET_HOST":"$BACKUP_PATH" "$TARGET_STORAGE"
 
     # Remove contents from remote target
     ssh $TARGET_HOST "rm -rf $BACKUP_PATH"
